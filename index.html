@@ -15,7 +15,7 @@
             <div class="col-md-7 col-12 section-form d-flex justify-content-center align-items-center">
                 <div class="d-flex flex-column">
                     <img class="mb-5 w-50 mx-auto" src="https://4m4you.com/wp-content/uploads/2020/06/logo-placeholder.png" alt="">
-                    <form action="" method="get">
+                    <form id="form-login" method="get">
                         <div class="mb-3">
                             <label for="email" class="form-label">Seu email</label>
                             <input type="email" class="form-control" id="email" placeholder="calabreso@email.com">
@@ -35,6 +35,14 @@
         </div>
     </div>
 
+    <script>
+        let formLogin = document.getElementById("form-login");
+
+        formLogin.addEventListener('submit', function(event){
+            event.preventDefault();
+            window.location.href = "dashboard.html";
+        })
+    </script>
     <script src="js/bootstrap.min.js"></script>
 </body>
 

@@ -34,7 +34,10 @@
 
     <div class="container-fluid mt-5">
         <div class="card p-4">
-            <form>
+            <div class="alert alert-success d-none" role="alert">
+                Colaborador cadastrado com sucesso!
+              </div>
+            <form id="form">
                 <div class="row">
                     <div class="col">
                         <label for="">Nome</label>
@@ -53,7 +56,34 @@
 
     </div>
 
+    <script>
+        let form = document.querySelector('#form');
+        let inputs = document.querySelectorAll('.form-control');
+        let colaboradores = JSON.parse(localStorage.getItem('colaboradores')) || [];
+        let alerta = document.querySelector('.alert');
 
+        form.addEventListener('submit', function(e) {
+
+            e.preventDefault();
+            let ordemInput = ['nome', 'identificacao'];
+            let colaborador = {};
+
+            inputs.forEach((input, i) => {
+                colaborador[ordemInput[i]] = input.value
+                input.value = '';
+            });
+
+            colaboradores.push(colaborador);
+
+            alerta.classList.remove('d-none');
+
+            setTimeout(() => {
+                alerta.classList.add('d-none');
+            }, 2000);
+
+            localStorage.setItem('colaboradores', JSON.stringify(colaboradores))
+        })
+    </script>
     <script src="js/bootstrap.min.js"></script>
 </body>
 

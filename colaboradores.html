@@ -45,35 +45,40 @@
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Primeiro</th>
-                    <th scope="col">Último</th>
-                    <th scope="col">Nickname</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Identificacao</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>@twitter</td>
-                </tr>
+            <tbody id="table_body">
+
             </tbody>
         </table>
         <!-- Fim tabela -->
 
+        <script>
+            let colaboradores = JSON.parse(localStorage.getItem('colaboradores')) ;
+            let table_body = document.querySelector('#table_body');
 
+            colaboradores.forEach((colaborador, i) => {
+                console.log(colaborador.nome)
+                var id = document.createElement('th');
+                id.innerText = i;
+
+                var name = document.createElement('td');
+                name.innerText = colaborador.nome;
+
+                var identificacao = document.createElement('td');
+                identificacao.innerText = colaborador.identificacao;
+
+                var row = document.createElement('tr')
+
+                row.appendChild(id);
+                row.appendChild(name);
+                row.appendChild(identificacao);
+
+                table_body.appendChild(row);
+            });
+        </script>
         <script src="js/bootstrap.min.js"></script>
 </body>
 
